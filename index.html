@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,6 +23,15 @@ h1{font-family:'Gowun Batang',serif;font-size:56px;color:var(--red);text-shadow:
 @keyframes sway{50%{transform:rotate(5deg)}}
 .card{background:linear-gradient(160deg,#2b0a12,#14060a);border:1px solid #5a1a24;border-radius:16px;padding:22px;margin:18px 0;box-shadow:0 0 30px rgba(200,16,46,.15)}
 .card h3{font-family:'Gowun Batang',serif;color:var(--gold);font-size:20px;margin-bottom:14px;text-align:center}
+.chap{position:relative;margin:30px 0;padding:40px 20px 26px;border:1px solid #6a1622;border-radius:30px 30px 16px 16px;background:radial-gradient(ellipse at top,#3a0b14,#140508 70%);box-shadow:0 0 40px rgba(200,16,46,.18),inset 0 0 40px rgba(0,0,0,.6)}
+.chap:before{content:'❦';position:absolute;top:12px;left:50%;transform:translateX(-50%);color:#8a2030;font-size:18px}
+.cl{text-align:center;font-family:'Gowun Batang',serif;color:#c9a07a;font-size:15px;letter-spacing:1px}
+.chap h2{text-align:center;font-family:'Gowun Batang',serif;color:#ff2a40;font-size:26px;line-height:1.4;margin:6px 0 24px;text-shadow:0 0 14px rgba(255,42,64,.35)}
+.ci{display:flex;gap:12px;margin:20px 0}
+.cn{flex:0 0 32px;font-family:'Gowun Batang',serif;font-size:42px;line-height:1;color:#7a2e38;text-align:center}
+.ci>div{flex:1;min-width:0}
+.ci h4{font-size:16px;margin-bottom:6px;color:#f3e1e4}
+.cb{font-size:14px;color:#d9b9be;line-height:1.85}
 label{display:block;font-size:14px;color:#c9aeb2;margin:14px 0 6px}
 input,select{width:100%;padding:13px;border-radius:10px;border:1px solid #5a1a24;background:#1a080c;color:var(--txt);font-size:16px}
 .chk{display:flex;align-items:center;gap:6px;font-size:13px;color:#b9999e;margin-top:8px}
@@ -34,16 +42,19 @@ input,select{width:100%;padding:13px;border-radius:10px;border:1px solid #5a1a24
 .pl small{display:block;font-size:11px;color:#b9999e;margin:4px 0}
 .gz{font-size:30px;font-family:serif;font-weight:700;border-radius:8px;padding:6px 0;margin:3px 0;color:#fff}
 .e0{background:#2e7d4f}.e1{background:#b8282e}.e2{background:#c9a23a;color:#111}.e3{background:#d8d8d8;color:#111}.e4{background:#24467a}.e5{background:#2a2a2a;color:#777}
-.prof div{display:flex;gap:12px;margin:10px 0;align-items:flex-start}
-.prof b{flex:0 0 52px;text-align:center;background:#4a0b17;border-radius:20px;padding:3px 0;font-size:13px;color:#ffb3bd}
-.yr{display:flex;align-items:center;gap:10px;margin:11px 0;font-size:14px}
-.yr span:first-child{flex:0 0 52px}
-.bar{flex:1;height:10px;background:#2a1015;border-radius:5px;overflow:hidden}
+.yr{display:flex;align-items:center;gap:8px;margin:9px 0 2px;font-size:13px}
+.yr span:first-child{flex:0 0 48px}
+.bar{flex:1;height:9px;background:#2a1015;border-radius:5px;overflow:hidden}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#7a1020,#ff3b55)}
-.yr span:last-child{flex:0 0 86px;text-align:right;font-size:12px;color:#d9a5ad}
-.best{border-left:3px solid var(--red);padding:8px 12px;margin:10px 0;background:rgba(200,16,46,.08);border-radius:0 8px 8px 0}
-.best strong{color:#ff6b7f}
+.yr span:last-child{flex:0 0 80px;text-align:right;font-size:11px;color:#d9a5ad}
 .tag{display:inline-block;padding:3px 9px;border-radius:20px;background:#3a0a13;font-size:12px;margin:3px 2px;color:#e8c9ce}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:12px 14px;border-radius:16px;line-height:1.75;font-size:15px}
+.bot{background:#3a0a13;align-self:flex-start;border-bottom-left-radius:4px}
+.me{background:#e8d9db;color:#1a0a0d;align-self:flex-end;border-bottom-right-radius:4px}
+.typing{opacity:.6;font-style:italic}
+.qs{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.qs button{padding:9px 12px;border-radius:20px;border:1px solid #7a2030;background:#1a080c;color:#f3d6db;font-size:13px;cursor:pointer}
 p{line-height:1.8}
 .note{font-size:12px;color:#8d7376;text-align:center;margin-top:24px;line-height:1.6}
 #result{display:none}
@@ -51,133 +62,252 @@ p{line-height:1.8}
 </head>
 <body>
 <div class="wrap">
-  <section class="scene"><div class="thread"></div><h1>紅緣</h1>
-    <p class="big serif">붉은 실 끝에 매달린<br><span class="em">네 다음 인연</span>을 보러 왔구나</p></section>
-  <section class="scene"><div class="bubble">새끼손가락에<br>실이 감겨 있네</div><div class="glyph">緣</div></section>
-  <section class="scene"><p class="big">그 실의 반대편 끝을<br><span class="em">누군가</span> 쥐고 있어</p>
-    <div class="bubble">생각보다<br>가까운 데 있을지도</div></section>
-  <section class="scene"><div class="bubble">언제 당겨질지<br>궁금하지?</div>
-    <p class="big"><span class="em">언제</span> 만나는지,<br><span class="em">어떤 사람</span>인지까지</p></section>
-  <section class="scene"><p class="big serif">전부 네 <span class="em">팔자</span>에 적혀 있어</p>
-    <p style="color:#c9aeb2">생년월일만 주면, 실을 따라가 줄게</p></section>
+<section class="scene"><div class="thread"></div><h1>紅緣</h1>
+<p class="big serif">붉은 실 끝에 매달린<br><span class="em">네 다음 인연</span>을 보러 왔구나</p></section>
+<section class="scene"><div class="bubble">새끼손가락에<br>실이 감겨 있네</div><div class="glyph">緣</div></section>
+<section class="scene"><p class="big">그 실의 반대편 끝을<br><span class="em">누군가</span> 쥐고 있어</p>
+<div class="bubble">생각보다<br>가까운 데 있을지도</div></section>
+<section class="scene"><div class="bubble">언제 당겨질지<br>궁금하지?</div>
+<p class="big"><span class="em">언제</span> 만나는지,<br><span class="em">어떤 사람</span>인지까지</p></section>
+<section class="scene"><p class="big serif">전부 네 <span class="em">팔자</span>에 적혀 있어</p>
+<p style="color:#c9aeb2">생년월일만 주면, 실을 따라가 줄게</p></section>
 
-  <section class="card" id="form">
-    <h3>네 실타래를 보여줘</h3>
-    <label>이름 (닉네임)</label><input id="name" placeholder="예: 민우" maxlength="10">
-    <label>성별</label><select id="gender"><option value="f">여성</option><option value="m">남성</option></select>
-    <label>생년월일 (양력)</label><input id="bdate" type="date" min="1930-01-01" max="2015-12-31">
-    <label>태어난 시간</label><input id="btime" type="time">
-    <label class="chk"><input type="checkbox" id="unk"> 시간을 몰라요</label>
-    <button class="btn" id="go">실 따라가기</button>
-  </section>
+<section class="card" id="form">
+<h3>네 실타래를 보여줘</h3>
+<label>이름 (닉네임)</label><input id="name" placeholder="예: 민우" maxlength="10">
+<label>성별</label><select id="gender"><option value="f">여성</option><option value="m">남성</option></select>
+<label>생년월일 (양력)</label><input id="bdate" type="date" min="1930-01-01" max="2015-12-31">
+<label>태어난 시간</label><input id="btime" type="time">
+<label class="chk"><input type="checkbox" id="unk"> 시간을 몰라요</label>
+<button class="btn" id="go">실 따라가기</button>
+</section>
 
-  <section class="scene" id="loading" style="display:none"><div class="thread"></div><p class="big serif">실을 따라가는 중…</p></section>
-  <div id="result"></div>
+<section class="scene" id="loading" style="display:none"><div class="thread"></div><p class="big serif">실을 따라가는 중…</p></section>
+<div id="result"></div>
 </div>
 <button class="cta" id="cta">실타래 점술사에게 연애사주 보기</button>
 
 <script>
 const G='甲乙丙丁戊己庚辛壬癸',Z='子丑寅卯辰巳午未申酉戌亥',GK='갑을병정무기경신임계',ZK='자축인묘진사오미신유술해';
 const EL=['목','화','토','금','수'],ZS=[9,5,0,1,4,2,3,5,6,7,4,8];
+const ANI=['쥐','소','호랑이','토끼','용','뱀','말','양','원숭이','닭','개','돼지'];
+const SAM=[[8,0,4],[5,9,1],[2,6,10],[11,3,7]];
 const se=s=>Math.floor(s/2),be=b=>se(ZS[b]),$=s=>document.querySelector(s);
 const TG=[['비견','겁재'],['식신','상관'],['편재','정재'],['편관','정관'],['편인','정인']];
 const tg=(ds,s)=>TG[(se(s)-se(ds)+5)%5][s%2===ds%2?0:1];
 
 function jd(y,m,d,h){if(m<=2){y--;m+=12}const A=Math.floor(y/100),B=2-A+Math.floor(A/4);
-  return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+h/24+B-1524.5}
-function sunLon(J){const T=(J-2451545)/36525,r=Math.PI/180,M=(357.52911+35999.05029*T)*r;
-  const C=(1.914602-0.004817*T)*Math.sin(M)+(0.019993-0.000101*T)*Math.sin(2*M)+0.000289*Math.sin(3*M);
-  return ((280.46646+36000.76983*T+C-0.00569-0.00478*Math.sin((125.04-1934.136*T)*r))%360+360)%360}
+return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+h/24+B-1524.5}
+function sunLon(J){const T=(J-2451545)/36525,r=Math.PI/180,M=(357.52911+35999.05029T)r;
+const C=(1.914602-0.004817T)Math.sin(M)+(0.019993-0.000101T)Math.sin(2M)+0.000289Math.sin(3M);
+return ((280.46646+36000.76983T+C-0.00569-0.00478Math.sin((125.04-1934.136T)r))%360+360)%360}
 function calc(y,m,d,hh,mm,known){
-  const lon=sunLon(jd(y,m,d,hh+mm/60-9));            // KST → UT
-  const mi=Math.floor(((lon-315+360)%360)/30);        // 0 = 寅월 (입춘 315°)
-  const sy=(m<=2&&lon>=270&&lon<315)?y-1:y;           // 입춘 전이면 전년도
-  const ys=((sy-4)%10+10)%10,yb=((sy-4)%12+12)%12;
-  const ms=(ys*2+2+mi)%10,mb=(mi+2)%12;
-  const di=(Math.round(jd(y,m,d,12))+49)%60,ds=di%10,db=di%12;
-  let h=null;
-  if(known){const t=hh*60+mm-30,hb=((Math.floor((t+60)/120))%12+12)%12;h=[(ds*2+hb)%10,hb]}
-  return {y:[ys,yb],m:[ms,mb],d:[ds,db],h};
+const lon=sunLon(jd(y,m,d,hh+mm/60-9));
+const mi=Math.floor(((lon-315+360)%360)/30);
+const sy=(m<=2&&lon>=270&&lon<315)?y-1:y;
+const ys=((sy-4)%10+10)%10,yb=((sy-4)%12+12)%12;
+const ms=(ys2+2+mi)%10,mb=(mi+2)%12;
+const di=(Math.round(jd(y,m,d,12))+49)%60,ds=di%10,db=di%12;
+let h=null;
+if(known){const t=hh60+mm-30,hb=((Math.floor((t+60)/120))%12+12)%12;h=[(ds2+hb)%10,hb]}
+return {y:[ys,yb],m:[ms,mb],d:[ds,db],h};
 }
 function score(s,b,me){
-  let sc=0,why=[];
-  if((se(s)-se(me.ds)+5)%5===me.star){sc+=2;why.push('인연의 별이 하늘에 뜸')}
-  if((be(b)-se(me.ds)+5)%5===me.star){sc+=2;why.push('인연의 별이 땅에 내려옴')}
-  if(b===me.dohwa){sc+=2;why.push('도화(桃花)가 피는 때')}
-  if((13-me.db)%12===b){sc+=2;why.push('배우자 자리와 합(合)')}
-  if((s-me.ds+10)%10===5){sc+=2;why.push('일간과 천간합, 강한 끌림')}
-  if((b-me.db+12)%12===6){sc+=1;why.push('배우자 자리가 흔들림, 관계의 변화')}
-  return {sc,why};
+let sc=0,why=[],chung=false;
+if((se(s)-se(me.ds)+5)%5===me.star){sc+=2;why.push(['인연의 별이 하늘에 뜸','새로운 사람을 만날 기회가 많아. 소개팅이나 모임에 적극적으로 나가 봐.'])}
+if((be(b)-se(me.ds)+5)%5===me.star){sc+=2;why.push(['인연의 별이 땅에 내려옴','가까운 곳에서 인연이 생겨. 이미 아는 사람이 다르게 보일 수 있어.'])}
+if(b===me.dohwa){sc+=2;why.push(['도화(桃花)가 피는 때','매력이 가장 빛나는 때야. 스타일에 변화를 주면 효과가 커.'])}
+if((13-me.db)%12===b){sc+=2;why.push(['배우자 자리와 합(合)','마음이 통하는 사람을 만나기 쉬워. 진지한 관계로 발전할 수 있어.'])}
+if((s-me.ds+10)%10===5){sc+=2;why.push(['일간과 천간합, 강한 끌림','강하게 끌리는 사람이 나타나. 첫눈에 반할 수도 있어.'])}
+if((b-me.db+12)%12===6){sc+=1;chung=true;why.push(['배우자 자리가 흔들림','관계에 변화가 생겨. 시작이 될 수도, 정리가 될 수도 있어.'])}
+return {sc,why,chung};
 }
-const STYLE=['한번 마음먹으면 곧게 가는 직진형. 다만 자존심 때문에 먼저 굽히질 못해.',
-'상대에 맞춰 유연하게 휘는 타입. 대신 서운한 건 오래 기억해.',
-'좋으면 다 티 나는 태양형. 뜨겁게 시작하는 만큼 식어 보일 때도 빨라.',
-'은근하게 챙기는 촛불형. 겉은 조용한데 속은 누구보다 뜨거워.',
-'묵직한 산 같은 타입. 쉽게 안 움직이지만 한번 품으면 끝까지 지켜.',
-'상대를 키워주는 밭 같은 사람. 너무 맞춰주다 혼자 지치는 게 문제야.',
-'애매한 건 질색인 결단형. 썸보다 확실한 관계를 원해.',
-'눈이 높고 섬세한 보석형. 말 한마디에 마음이 열리고 닫혀.',
-'자유로운 바다형. 구속은 싫지만 마음 맞는 사람한텐 한없이 깊어져.',
-'조용히 스며드는 비 같은 타입. 좋아할수록 티 안 내고 상대 반응부터 살펴.'];
-const PF=[['키가 크고 선이 가늘며 손이 예쁜','교육·기획·디자인·의료','다정하지만 자기 계획이 뚜렷한'],
-['눈빛이 밝고 웃는 얼굴이 인상적인','미디어·마케팅·서비스·예술','솔직하고 표현이 풍부한'],
-['듬직하고 편안한 인상의','공공기관·부동산·중개·컨설팅','느긋하고 한결같은'],
-['이목구비가 또렷하고 깔끔한','금융·IT·법률·엔지니어','단호하고 기준이 분명한'],
-['눈이 깊고 분위기 있는','연구·무역·콘텐츠·심리','속이 깊고 생각이 많은']];
+const STYLE=[
+['한번 마음먹으면 곧게 가는 직진형이야. 좋아하는 사람이 생기면 그 사람을 중심으로 계획부터 세워.','챙겨주고 이끌어주려 해. 데이트 코스도, 미래 이야기도 네가 먼저 꺼내는 편이야.','자존심 때문에 먼저 굽히질 못해. 다툰 뒤 "미안해" 한마디가 제일 어려운 사람이 너야.'],
+['상대에 맞춰 유연하게 휘는 덩굴 같은 타입이야. 분위기를 잘 읽고 상대를 편하게 해줘.','은근히 곁에 머물러. 연락을 자주 하고, 작은 기념일까지 잘 챙겨.','서운한 걸 바로 말하지 않고 쌓아둬. 한 번에 터지기 전에, 그때그때 말하는 연습이 필요해.'],
+['좋으면 다 티 나는 태양형이야. 첫 만남부터 분위기를 밝게 만들고 사람을 끌어당겨.','표현을 아끼지 않아. 칭찬, 선물, 이벤트까지 다 해주고 싶어 해.','뜨겁게 시작하는 만큼 식어 보일 때도 빨라. 상대가 네 온도 변화에 불안해할 수 있어.'],
+['은근하게 챙기는 촛불형이야. 겉으로는 조용한데 속은 누구보다 뜨거워.','상대의 사소한 말까지 기억했다가 나중에 챙겨줘서 감동을 줘.','혼자 상처받고 혼자 정리하는 경우가 많아. 마음을 꺼내 보여줘야 상대도 알아.'],
+['묵직한 산 같은 타입이야. 쉽게 움직이지 않지만 한번 마음을 주면 끝까지 지켜.','말보다 행동으로 보여줘. 곁에 있어 주고, 필요한 걸 조용히 해결해 줘.','표현이 적어서 상대가 "날 좋아하긴 해?" 하고 불안해할 수 있어. 가끔은 말로 해줘.'],
+['상대를 키워주는 밭 같은 사람이야. 함께 있으면 편안해서 상대가 너한테 기대게 돼.','상대의 일상을 세심하게 돌봐. 밥은 먹었는지, 오늘 힘들진 않았는지 꼭 물어.','너무 맞춰주다 혼자 지쳐. 네가 원하는 것도 분명히 말해야 관계가 오래가.'],
+['애매한 건 질색인 결단형이야. 썸을 길게 끄는 것보다 확실한 관계를 원해.','의리 있게 지켜줘. 무슨 일이 있어도 상대 편을 들어주는 든든한 사람이야.','말이 직설적이라 의도와 다르게 상처를 줄 수 있어. 한 박자 쉬고 부드럽게 말해봐.'],
+['눈이 높고 섬세한 보석형이야. 기준에 맞는 사람에게만 마음을 열어.','분위기 있는 데이트를 원하고, 작은 말 한마디에도 크게 설레.','예민해서 사소한 실수에도 마음이 닫힐 수 있어. 완벽한 사람은 없다는 걸 기억해.'],
+['자유로운 바다형이야. 구속은 싫지만 마음 맞는 사람한테는 한없이 깊어져.','새로운 곳에 같이 가고 싶어 해. 여행, 맛집, 새로운 경험을 함께 나누는 게 너의 사랑이야.','누구에게나 친절해서 오해를 사기도 해. 한 사람에게 집중하는 모습을 보여줘.'],
+['조용히 스며드는 비 같은 타입이야. 겉으로는 담담해 보여도 속으로는 감정이 깊어.','말하지 않아도 상대의 기분을 먼저 알아채고, 필요한 걸 조용히 건네줘.','감정을 잘 드러내지 않아서 상대가 네 마음을 모른 채 지나가기도 해. 조금만 더 용기 내봐.']];
+const PF=[
+['키가 크고 선이 가늘며 손이 예쁜','교육·기획·디자인·의료','다정하지만 자기 계획이 뚜렷한','공부 모임, 학원, 도서관, 지인 소개','처음엔 점잖은데 대화할수록 따뜻함이 느껴져'],
+['눈빛이 밝고 웃는 얼굴이 인상적인','미디어·마케팅·서비스·예술','솔직하고 표현이 풍부한','모임, 공연, 파티, SNS','첫 만남부터 분위기를 주도해서 눈에 띄어'],
+['듬직하고 편안한 인상의','공공기관·부동산·중개·컨설팅','느긋하고 한결같은','직장, 동네, 오래 알던 지인 사이','처음엔 평범해 보이는데 볼수록 믿음이 가'],
+['이목구비가 또렷하고 깔끔한','금융·IT·법률·엔지니어','단호하고 기준이 분명한','업무, 프로젝트, 운동 모임','첫인상은 차가운데 알고 보면 의리가 있어'],
+['눈이 깊고 분위기 있는','연구·무역·콘텐츠·심리','속이 깊고 생각이 많은','여행지, 온라인, 늦은 밤의 대화','처음부터 묘하게 끌리는데 속을 알기 어려워']];
+const ATTR=['네가 무언가에 열중하고 성장하는 모습을 보일 때 마음이 움직여. 함께 배우거나 계획을 세우는 데이트가 좋아.',
+'함께 웃을 때 마음이 열려. 리액션을 크게 해주고, 밝고 활기찬 곳에서 만나는 게 좋아.',
+'꾸준하고 믿음직한 모습에 끌려. 약속을 잘 지키고, 편안한 일상 데이트가 잘 맞아.',
+'깔끔하고 분명한 태도에 끌려. 애매하게 굴지 말고, 시간 약속을 꼭 지켜.',
+'깊은 대화를 나눌 때 마음을 열어. 늦은 밤 산책이나 조용한 카페가 잘 어울려.'];
+const STRONG=['목(木) 기운이 가장 강해서 함께 성장하는 연애를 원해. 서로 발전할 수 있는 사람에게 끌려.',
+'화(火) 기운이 가장 강해서 열정적이야. 설렘이 연애의 원동력이라 권태기를 조심해야 해.',
+'토(土) 기운이 가장 강해서 안정적인 관계를 원해. 한번 만나면 오래 가는 편이야.',
+'금(金) 기운이 가장 강해서 기준이 분명해. 아니다 싶으면 미련 없이 정리하는 편이야.',
+'수(水) 기운이 가장 강해서 감수성이 풍부해. 깊은 대화가 통하는 사람에게 빠져.'];
+const WEAK=['목(木)이 없어서 관계를 시작하는 추진력이 약할 수 있어. 먼저 한 발 내딛는 연습이 필요해.',
+'화(火)가 없어서 표현이 서툴 수 있어. 좋아하는 마음을 말로 꺼내 보는 게 중요해.',
+'토(土)가 없어서 관계에서 안정감을 느끼기 어려울 수 있어. 믿을 수 있는 사람을 천천히 골라.',
+'금(金)이 없어서 거절을 잘 못 해. 아닌 관계는 단호하게 끊는 용기가 필요해.',
+'수(水)가 없어서 상대 마음을 읽기 어려울 수 있어. 궁금하면 직접 물어보는 게 답이야.'];
+const CONF=['돌려 말하지 말고 정면으로 직진하는 것','편지나 긴 메시지처럼 부드럽게 마음을 전하는 것','분위기 좋은 날, 작은 이벤트와 함께 밝게 말하는 것','조용한 곳에서 눈을 보며 진심을 담아 말하는 것','행동으로 먼저 보여준 뒤 짧게 한마디 하는 것','편안한 일상 속에서 자연스럽게 꺼내는 것','짧고 확실하게, 망설임 없이 말하는 것','예쁜 장소에서 세련되게 마음을 전하는 것','여행이나 특별한 경험을 함께하는 중에 말하는 것','둘만의 밤 산책처럼 조용한 시간에 솔직하게 말하는 것'];
+const CHARM=['곧은 자세와 믿음직한 분위기','부드러운 말투와 세심한 배려','환한 웃음과 넘치는 에너지','은은한 눈빛과 섬세함','듬직함과 여유','편안함과 다정함','시원시원한 결단력','세련된 감각과 깔끔함','자유로운 분위기와 넓은 마음','신비로운 분위기와 깊은 공감 능력'];
+const LESSON=['이 사람은 너를 자라게 해. 함께 있으면 미뤄왔던 계획을 시작할 용기가 생기고, 1년 뒤의 네가 지금보다 단단해져 있을 거야.',
+'이 사람은 네 안의 열정을 깨워. 잊고 있던 설렘과 웃음을 되찾고, 매일이 조금 더 밝아져.',
+'이 사람은 너에게 쉴 곳이 돼. 흔들리던 마음이 자리를 잡고, 안정이 어떤 느낌인지 처음으로 알게 돼.',
+'이 사람은 네 기준을 분명하게 만들어 줘. 무엇을 지키고 무엇을 놓을지, 너 자신을 더 잘 알게 돼.',
+'이 사람은 너를 깊어지게 해. 네 감정을 들여다보고, 솔직해지는 법을 배우게 돼.'];
+const ASK=['고집을 조금 내려놓는 유연함','뜨거움이 식어도 곁에 머무는 꾸준함','마음을 말로 꺼내는 솔직함','날카로운 말을 한 번 삼키는 너그러움','한 사람에게 머무르는 진득함'];
+const YT=sc=>sc>=6?'인연의 실이 강하게 당겨지는 해야. 새로운 만남이 생기거나 지금 관계가 한 단계 깊어질 가능성이 커.':
+sc>=3?'실이 조금씩 움직이는 해야. 주변을 잘 살피면 좋은 사람이 눈에 들어와.':
+sc>=1?'큰 움직임은 없지만 작은 계기가 생길 수 있어. 모임이나 소개 자리를 피하지 마.':
+'실이 잔잔한 해야. 연애보다 나를 가꾸는 데 집중하면 다음 인연을 만날 준비가 돼.';
+const lab=sc=>sc>=6?'강하게 당겨짐':sc>=3?'실이 움직임':'잔잔함';
+const ym=x=>`${x.yy}년 ${x.mo}월`;
+const chap=(n,title,items)=>`<div class="chap"><div class="cl">Chapter ${n}</div><h2>${title}</h2>${items.map((it,i)=>`<div class="ci"><span class="cn">${i+1}</span><div><h4>${it[0]}</h4><div class="cb">${it[1]}</div></div></div>`).join('')}</div>`;
 
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.3});
 document.querySelectorAll('.scene').forEach(el=>io.observe(el));
-$('#cta').onclick=()=>$('#form').scrollIntoView({behavior:'smooth'});
+$('#cta').onclick=()=>{if($('#bdate').value)$('#go').click();else $('#form').scrollIntoView({behavior:'smooth'})};
 $('#unk').onchange=e=>$('#btime').disabled=e.target.checked;
 
 $('#go').onclick=()=>{
-  const v=$('#bdate').value;if(!v){alert('생년월일을 알려줘');return}
-  const [y,m,d]=v.split('-').map(Number),tv=$('#btime').value,known=!$('#unk').checked&&!!tv;
-  const [hh,mm]=known?tv.split(':').map(Number):[12,0];
-  const name=$('#name').value.trim()||'너',male=$('#gender').value==='m';
-  $('#form').style.display='none';$('#cta').style.display='none';
-  const L=$('#loading');L.style.display='flex';L.classList.add('show');L.scrollIntoView({behavior:'smooth'});
-  setTimeout(()=>{L.style.display='none';render(calc(y,m,d,hh,mm,known),male,name)},2400);
+const v=$('#bdate').value;if(!v){alert('생년월일을 알려줘');return}
+const [y,m,d]=v.split('-').map(Number),tv=$('#btime').value,known=!$('#unk').checked&&!!tv;
+const [hh,mm]=known?tv.split(':').map(Number):[12,0];
+const name=$('#name').value.trim()||'너',male=$('#gender').value==='m';
+$('#form').style.display='none';$('#cta').style.display='none';
+const L=$('#loading');L.style.display='flex';L.classList.add('show');L.scrollIntoView({behavior:'smooth'});
+setTimeout(()=>{L.style.display='none';render(calc(y,m,d,hh,mm,known),male,name)},2400);
 };
 
+let C;
 function render(P,male,name){
-  const ds=P.d[0],db=P.d[1],star=male?2:3,me={ds,db,star,dohwa:[9,6,3,0][db%4]};
-  const cols=[['시주',P.h],['일주',P.d],['월주',P.m],['년주',P.y]],cnt=[0,0,0,0,0];let stars=0;
-  let h=`<div class="card"><h3>${name}의 팔자</h3><div class="pillars">`;
-  cols.forEach(([lb,p])=>{
-    if(!p){h+=`<div class="pl"><small>${lb}</small><div class="gz e5">?</div><div class="gz e5">?</div><small>시간 모름</small></div>`;return}
-    cnt[se(p[0])]++;cnt[be(p[1])]++;
-    if(lb!=='일주'&&(se(p[0])-se(ds)+5)%5===star)stars++;
-    if((be(p[1])-se(ds)+5)%5===star)stars++;
-    h+=`<div class="pl"><small>${lb==='일주'?'나':tg(ds,p[0])}</small><div class="gz e${se(p[0])}">${G[p[0]]}</div><div class="gz e${be(p[1])}">${Z[p[1]]}</div><small>${tg(ds,ZS[p[1]])}<br>${GK[p[0]]}${ZK[p[1]]}</small></div>`;
-  });
-  h+=`</div><p style="text-align:center;margin-top:12px">${cnt.map((c,i)=>`<span class="tag">${EL[i]} ${c}</span>`).join('')}</p></div>`;
+const ds=P.d[0],db=P.d[1],star=male?2:3,me={ds,db,star,dohwa:[9,6,3,0][db%4]};
+const cols=[['시주',P.h],['일주',P.d],['월주',P.m],['년주',P.y]],cnt=[0,0,0,0,0];let stars=0;
+let h=`<div class="card"><h3>${name}의 팔자</h3><div class="pillars">`;
+cols.forEach(([lb,p])=>{
+\if(!p){h+=`<div class="pl"><small>${lb}</small><div class="gz e5">?</div><div class="gz e5">?</div><small>시간 모름</small></div>`;return}
+\cnt[se(p[0])]++;cnt[be(p[1])]++;
+\if(lb!=='일주'&&(se(p[0])-se(ds)+5)%5===star)stars++;
+\if((be(p[1])-se(ds)+5)%5===star)stars++;
+\h+=`<div class="pl"><small>${lb==='일주'?'나':tg(ds,p[0])}</small><div class="gz e${se(p[0])}">${G[p[0]]}</div><div class="gz e${be(p[1])}">${Z[p[1]]}</div><small>${tg(ds,ZS[p[1]])}<br>${GK[p[0]]}${ZK[p[1]]}</small></div>`;
+});
+h+=`</div><p style="text-align:center;margin-top:12px">${cnt.map((c,i)=>`<span class="tag">${EL[i]} ${c}</span>`).join('')}</p></div>`;
 
-  h+=`<div class="card"><h3>너의 연애 결</h3><p>${name}, ${STYLE[ds]}</p><p style="margin-top:10px;color:#d9b9be">${
-    stars===0?'팔자에 인연의 별이 숨어 있어. 운에서 들어올 때 갑자기 확 당겨지는 타입이야.':
-    stars>=3?'인연의 별이 여럿이라 주변에 사람이 끊이지 않아. 고르는 눈이 중요해.':
-    '인연의 별이 적당히 떠 있어. 때만 맞으면 자연스럽게 이어져.'}</p></div>`;
+const mx=cnt.indexOf(Math.max(...cnt)),miss=[0,1,2,3,4].filter(i=>!cnt[i]),S=STYLE[ds];
+const se2=(se(ds)+star)%5,pf=PF[se2],hz=(13-db)%12,sam=SAM[db%4].filter(x=>x!==db);
+const good=[...new Set([hz,...sam])].map(x=>ANI[x]+'띠').join(', ');
+const dh=cols.some(([,p])=>p&&p[1]===me.dohwa);
+const starT=(male?'남자에게 연인은 재성(財星)으로 봐. ':'여자에게 연인은 관성(官星)으로 봐. ')+(stars===0?'네 팔자에는 인연의 별이 숨어 있어. 평소엔 연애에 무심하다가, 운에서 별이 들어올 때 갑자기 확 당겨지는 타입이야. 그래서 타이밍이 특히 중요해.':
+\stars>=3?'네 팔자에는 인연의 별이 여럿 떠 있어. 주변에 사람이 끊이지 않고 호감도 자주 받아. 대신 고르는 눈이 중요해.':
+'네 팔자에는 인연의 별이 적당히 떠 있어. 억지로 찾지 않아도 때가 맞으면 자연스럽게 이어지는 타입이야.');
 
-  const pf=PF[(se(ds)+star)%5];
-  h+=`<div class="card prof"><h3>운명의 상대 프로필</h3><div><b>외모</b><span>${pf[0]} 사람</span></div><div><b>직업</b><span>${pf[1]} 쪽 기운</span></div><div><b>성격</b><span>${pf[2]} 성향</span></div></div>`;
+const now=new Date(),Y0=now.getFullYear();let yrs=[],ms=[];
+for(let Y=Y0;Y<Y0+5;Y++){const s=((Y-4)%10+10)%10,b=((Y-4)%12+12)%12;yrs.push({Y,s,b,...score(s,b,me)})}
+for(let i=0;i<12;i++){const dt=new Date(Y0,now.getMonth()+i,20),yy=dt.getFullYear(),mo=dt.getMonth()+1,p=calc(yy,mo,20,12,0,true).m;
+\ms.push({yy,mo,p,...score(p[0],p[1],me)})}
+const top=ms.filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,3),ca=ms.filter(x=>x.chung),by=yrs.reduce((a,b)=>b.sc>a.sc?b:a);
+const cm=ms.filter(x=>!x.chung&&x.why.some(w=>/합|땅/.test(w[0]))).slice(0,2),cf=cm.length?cm:top.slice(0,1);
 
-  const now=new Date(),Y0=now.getFullYear();let yrs=[];
-  for(let Y=Y0;Y<Y0+5;Y++){const s=((Y-4)%10+10)%10,b=((Y-4)%12+12)%12;yrs.push({Y,s,b,...score(s,b,me)})}
-  const lab=sc=>sc>=6?'강하게 당겨짐':sc>=3?'실이 움직임':'잔잔함';
-  h+=`<div class="card"><h3>해마다 실이 당겨지는 세기</h3>${yrs.map(r=>`<div class="yr"><span>${r.Y}</span><div class="bar"><i style="width:${Math.max(6,r.sc/11*100)}%"></i></div><span>${G[r.s]}${Z[r.b]} · ${lab(r.sc)}</span></div>`).join('')}</div>`;
+h+=chap(1,'사랑 앞에 선 너',[
+['사랑 앞에서만 드러나는 너',`<span class="em">${G[ds]}(${GK[ds]})</span> 일간인 ${name}, ${S[0]} 좋아하면 ${S[1]}`],
+['네가 반복해온 연애 패턴',`${S[2]}<br><br>${STRONG[mx]}${miss.length?'<br><br>'+miss.map(i=>WEAK[i]).join('<br><br>'):''}`],
+['사람들이 너에게 끌리는 이유',`네 매력은 <b>${CHARM[ds]}</b>이야. ${dh?'게다가 팔자에 도화(桃花)가 있어서 가만히 있어도 눈길을 끌어. 생각보다 너를 지켜보는 사람이 많아.':'팔자에 도화는 없지만, 오래 볼수록 빠져드는 타입이야. 첫인상보다 두세 번째 만남에서 진가가 드러나.'}`],
+['네 팔자 속 인연의 별',starT]]);
 
-  let ms=[];
-  for(let i=0;i<12;i++){const dt=new Date(Y0,now.getMonth()+i,20),yy=dt.getFullYear(),mo=dt.getMonth()+1,p=calc(yy,mo,20,12,0,true).m;
-    ms.push({yy,mo,p,...score(p[0],p[1],me)})}
-  const top=ms.filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc||0).slice(0,3);
-  h+=`<div class="card"><h3>가장 세게 당겨지는 달</h3>${top.length?top.map(t=>`<div class="best"><strong>${t.yy}년 ${t.mo}월</strong> (${G[t.p[0]]}${Z[t.p[1]]}월)<br>${t.why.map(w=>`<span class="tag">${w}</span>`).join('')}</div>`).join(''):'<p>앞으로 1년은 실이 조용해. 대신 나를 가꾸기 좋은 때야.</p>'}</div>`;
+h+=chap(2,'실 끝에 선<br>그 사람',[
+['그 사람의 얼굴과 분위기',`<b>${pf[0]} 사람</b>이야. ${pf[4]}.`],
+['그 사람이 살아가는 방식',`성격은 ${pf[2]} 편이야. ${pf[1]} 쪽 일을 하거나, 그런 기운을 가진 사람일 가능성이 커.`],
+['그 사람의 마음을 여는 열쇠',`${ATTR[se2]}<br><br>띠로 보면 <b>${good}</b>와 특히 잘 통해. 배우자 자리인 일지(${Z[db]})를 기준으로 본 거야.`]]);
 
-  const by=yrs.reduce((a,b)=>b.sc>a.sc?b:a);
-  h+=`<div class="card" style="text-align:center"><p class="serif" style="font-size:19px">${by.sc>0?`<span class="em">${by.Y}년</span>, 네 실이 가장 세게 당겨져.<br>그때 손 놓지 마.`:'실은 끊어지지 않아.<br>천천히 당겨질 뿐이야.'}</p>
-  <button class="btn" onclick="location.reload()">다른 사람 실도 보기</button>
-  ${navigator.share?`<button class="btn" onclick="navigator.share({title:'홍연 연애사주',url:location.href})">친구에게 공유하기</button>`:''}</div>
-  <p class="note">절기 기준 만세력 · 태어난 시간은 30분 보정<br>재미로 보는 콘텐츠예요. 중요한 결정은 스스로!</p>`;
-  const R=$('#result');R.innerHTML=h;R.style.display='block';R.scrollIntoView({behavior:'smooth'});
+h+=chap(3,'실이 당겨지는<br>그날',[
+['그 사람이 나타나는 때',top.length?`가장 강하게 당겨지는 달은 <b class="em">${ym(top[0])}</b>이야. ${top[0].why.map(w=>w[1]).join(' ')}${top.length>1?'<br><br>그다음은 '+top.slice(1).map(ym).join(', ')+' 순서야.':''}<br><br>해 단위로는 <b>${by.Y}년</b>이 가장 강해.`:`앞으로 1년은 실이 잔잔해. 해 단위로 보면 <b>${by.Y}년</b>을 기다려 봐. ${YT(by.sc)}`],
+['너희가 처음 엮이는 곳',`${pf[3]} 같은 곳에서 실이 닿기 쉬워. 평소 가지 않던 자리에 한 번 나가 보는 게 계기가 돼.`],
+['마음을 전하기 좋은 때',`${cf.length?`고백하기 좋은 달은 <b>${cf.map(ym).join(', ')}</b>이야. 마음이 통하는 기운이 드는 때라 진심이 잘 전해져.`:'앞으로 1년은 특별히 강한 달이 없어. 타이밍보다 관계가 충분히 무르익었는지를 기준으로 삼아.'}<br><br>너한테 맞는 방식은 <b>${CONF[ds]}</b>이야.`]]);
+
+h+=chap(4,'해마다, 달마다<br>당겨지는 실',[
+['다섯 해의 흐름',yrs.map(r=>`<div class="yr"><span>${r.Y}</span><div class="bar"><i style="width:${Math.max(6,r.sc/11100)}%"></i></div><span>${G[r.s]}${Z[r.b]} · ${lab(r.sc)}</span></div>`).join('')+`<p style="margin-top:10px">${by.Y}년: ${YT(by.sc)}</p>`],
+['열두 달의 흐름',ms.map(x=>`<div class="yr"><span>${String(x.yy).slice(2)}.${x.mo}월</span><div class="bar"><i style="width:${Math.max(6,x.sc/11100)}%"></i></div><span>${G[x.p[0]]}${Z[x.p[1]]} · ${lab(x.sc)}</span></div>`).join('')]]);
+
+h+=chap(5,'이 인연이<br>너에게 남기는 것',[
+['이 사랑이 주는 선물',LESSON[se2]],
+['이 사랑이 요구하는 것',`이 인연을 지키려면 <b>${ASK[se(ds)]}</b>이 필요해. 처음엔 어색해도, 그게 이 관계를 오래 붙잡아 줄 거야.`],
+['조심해야 할 순간',ca.length?`<b>${ca.map(ym).join(', ')}</b>은 배우자 자리가 흔들리는 달이야. 큰 다툼이나 충동적인 결정은 피하고, 감정이 올라오면 하루 쉬었다가 대화로 풀어.`:'앞으로 1년 안에 크게 흔들리는 달은 없어. 대신 익숙함에 소홀해지지 않도록 조심해.'],
+['점술사의 마지막 한마디',`${by.sc>0?`<span class="em">${by.Y}년</span>, 네 실이 가장 세게 당겨져. 그때 손 놓지 마.`:'실은 끊어지지 않아. 천천히 당겨질 뿐이야.'}<br><br>${name}, 인연은 기다리는 사람보다 준비된 사람에게 먼저 와. 좋은 달이 오기 전까지 너를 아끼는 시간을 보내.`]]);
+
+h+=`<div class="card"><h3>실타래 점술사 상담</h3><div class="chat" id="chat"></div><div class="qs" id="qs"></div></div>
+<div class="card" style="text-align:center;padding:4px 22px 22px"><button class="btn" onclick="location.reload()">다른 사람 실도 보기</button>
+${navigator.share?`<button class="btn" onclick="navigator.share({title:'홍연 연애사주',url:location.href})">친구에게 공유하기</button>`:''}</div>
+<p class="note">절기 기준 만세력 · 태어난 시간은 30분 보정<br>재미로 보는 콘텐츠예요. 중요한 결정은 스스로!</p>`;
+const R=$('#result');R.innerHTML=h;R.style.display='block';R.scrollIntoView({behavior:'smooth'});
+
+C={name,male,ds,db,star,stars,S,pf,se2,good,ms,yrs,top,by,miss,mx,yb:P.y[1],dh,dm:ms.filter(x=>x.p[1]===me.dohwa)};
+say(`${name}, 풀이는 여기까지야. 더 궁금한 게 있으면 아래에서 골라봐. 실타래 점술사가 답해줄게.`,'bot');
+drawQs();
+}
+
+const QS=[['언제 연애해?','when'],['내 운명의 상대는?','who'],['썸 타는 사람이랑 잘될까?','some'],['재회 가능할까?','back'],['고백은 언제 해?','conf'],['다음 달 연애운은?','next'],['내 연애 단점은?','weak'],['내 매력 포인트는?','charm'],['그 사람이랑 궁합 볼래','gung']];
+function say(t,who){const d=document.createElement('div');d.className='msg '+who;d.innerHTML=t;$('#chat').appendChild(d);d.scrollIntoView({behavior:'smooth',block:'center'});return d}
+function botSay(t){const d=say('실을 살펴보는 중…','bot typing');
+setTimeout(()=>{d.className='msg bot';d.innerHTML=t+'<br><br><span class="em">또 궁금한 거 있어?</span> 아래에서 골라봐.';d.scrollIntoView({behavior:'smooth',block:'center'})},1200)}
+function drawQs(){$('#qs').innerHTML=QS.map(q=>`<button data-k="${q[1]}">${q[0]}</button>`).join('');
+$('#qs').querySelectorAll('button').forEach(b=>b.onclick=()=>{say(b.textContent,'me');ANS[b.dataset.k]()})}
+
+const ANS={
+when(){const t=C.top;
+let s=t.length?`${C.name}, 실이 가장 세게 당겨지는 건 <b class="em">${ym(t[0])}</b>이야. ${t[0].why.map(w=>w[1]).join(' ')}`:`${C.name}, 앞으로 1년은 실이 잔잔해. 억지로 당기기보다 나를 가꾸는 시간으로 써.`;
+if(t.length>1)s+=`<br><br>그다음은 ${t.slice(1).map(ym).join(', ')} 순서야.`;
+s+=`<br><br>해 단위로 보면 <b>${C.by.Y}년</b>이 가장 강해. ${YT(C.by.sc)}<br><br>인연은 ${C.pf[3]} 같은 곳에서 닿기 쉬워.`;
+if(C.ms[0].sc>=4)s+='<br><br>참고로 이번 달도 흐름이 좋아. 지금 주변을 잘 봐.';
+botSay(s)},
+who(){const p=C.pf;
+botSay(`${C.name}의 인연은 <b>${p[0]} 사람</b>이야. ${p[4]}.<br><br>성격은 ${p[2]} 편이고, ${p[1]} 쪽 일을 하거나 그런 분위기를 가진 사람일 가능성이 커.<br><br>이 사람은 ${ATTR[C.se2]}<br><br>띠로 보면 ${C.good}와 특히 잘 통해.`)},
+some(){const a=C.ms[0],b=C.ms[1],nx=C.top.find(x=>x!==a);
+let s=a.sc>=4?`이번 달은 실이 ${lab(a.sc)} 상태야. 흐름이 네 편이니까 한 발 다가가도 괜찮아.`:a.chung?'이번 달은 배우자 자리가 흔들리는 달이라 오해가 생기기 쉬워. 서두르지 말고 가볍게 연락을 이어가.':'이번 달은 실이 잔잔해. 밀어붙이기보다 편한 대화로 거리를 좁히는 게 좋아.';
+s+=`<br><br>다음 달은 ${lab(b.sc)}. ${b.why.length?b.why[0][1]:'큰 변화보다는 관계를 다지는 시기야.'}`;
+if(nx)s+=`<br><br>관계를 확실히 하고 싶다면 <b>${ym(nx)}</b>을 노려봐.`;
+s+=`<br><br>참고로 너는 ${C.S[2]}<br><br>그 사람 생일을 알면 "그 사람이랑 궁합 볼래"를 눌러봐. 더 자세히 봐줄게.`;
+botSay(s)},
+back(){const hp=C.ms.filter(x=>x.why.some(w=>w[0].includes('합'))),c=C.ms.filter(x=>x.chung);
+let s=hp.length?`끊어진 실이 다시 이어질 수 있는 때는 <b>${hp.slice(0,2).map(ym).join(', ')}</b>이야. 합(合)이 드는 달이라 연락이 닿거나 마음이 다시 움직이기 쉬워.`:'앞으로 1년 안에는 다시 묶이는 합(合)의 달이 뚜렷하지 않아. 억지로 잡기보다 시간을 두는 게 좋아.';
+if(c.length)s+=`<br><br>${c.map(ym).join(', ')}은 배우자 자리가 흔들리는 달이야. 이때는 감정적으로 연락하지 마.`;
+s+=C.stars>=3?'<br><br>네 팔자엔 인연의 별이 많아서, 지난 사람보다 더 잘 맞는 사람이 올 가능성도 커.':'<br><br>다만 사주는 흐름을 보여줄 뿐이야. 다시 만날지는 결국 두 사람의 선택이야.';
+botSay(s)},
+conf(){const g=C.ms.filter(x=>!x.chung&&x.why.some(w=>/합|땅/.test(w[0]))).slice(0,2),t=g.length?g:C.top.slice(0,1);
+let s=t.length?`고백하기 좋은 달은 <b>${t.map(ym).join(', ')}</b>이야. 마음이 통하는 기운이 드는 때라 진심이 잘 전해져.`:'앞으로 1년은 특별히 강한 달이 없어. 그럴 땐 타이밍보다 관계가 충분히 무르익었는지를 기준으로 삼아.';
+s+=`<br><br>너한테 맞는 고백 방식은 <b>${CONF[C.ds]}</b>이야.`;
+const c=C.ms.filter(x=>x.chung);if(c.length)s+=`<br><br>${c.map(ym).join(', ')}은 피하는 게 좋아. 말이 엇나가기 쉬운 달이야.`;
+botSay(s)},
+next(){const a=C.ms[0],b=C.ms[1];
+botSay(`<b>이번 달(${a.mo}월)</b>은 ${lab(a.sc)}. ${a.why.length?a.why.map(w=>w[1]).join(' '):'큰 움직임 없이 잔잔한 달이야.'}<br><br><b>다음 달(${b.mo}월)</b>은 ${lab(b.sc)}. ${b.why.length?b.why.map(w=>w[1]).join(' '):'조용한 달이야. 나를 가꾸고 사람들과 가볍게 어울리는 데 써.'}`)},
+weak(){let s=`${C.name}, 너는 ${C.S[2]}`;
+s+=C.miss.length?'<br><br>'+C.miss.map(i=>WEAK[i]).join('<br><br>'):`<br><br>오행이 고루 있는 편이라 큰 구멍은 없어. 다만 ${EL[C.mx]} 기운이 가장 강해서, 그 성향이 지나치지 않게만 조심해.`;
+s+='<br><br>단점은 고치는 것보다 알고 있는 게 더 중요해. 알면 같은 실수를 덜 하게 돼.';
+botSay(s)},
+charm(){botSay(`네 매력은 <b>${CHARM[C.ds]}</b>이야.<br><br>${C.dh?'게다가 팔자에 도화(桃花)가 있어. 가만히 있어도 눈길을 끄는 타입이라, 생각보다 너를 지켜보는 사람이 많아.':'팔자에 도화는 없지만, 그래서 오래 볼수록 반하게 되는 타입이야. 첫인상보다 알수록 매력이 커져.'}<br><br>매력이 가장 빛나는 때는 도화가 피는 달이야. ${C.dm.length?C.dm.map(ym).join(', ')+'을 기억해 둬.':'앞으로 1년 안에는 그 달이 없지만, 대신 꾸준함이 무기야.'}`)},
+gung(){const d=say('그 사람 생년월일을 알려줘. 시간은 몰라도 괜찮아.<br><input type="date" class="pd" style="margin:8px 0"><button class="btn pgo" style="margin-top:4px;padding:10px;font-size:15px">궁합 보기</button>','bot');
+const bt=d.querySelector('.pgo');
+bt.onclick=()=>{const v=d.querySelector('.pd').value;if(!v){alert('생년월일을 입력해줘');return}
+\const [y,m,dd]=v.split('-').map(Number);bt.disabled=true;say(`${y}년 ${m}월 ${dd}일생이야`,'me');gungRes(calc(y,m,dd,12,0,false))}}
+};
+function gungRes(Q){
+const a=C.ds,b=Q.d[0],x=C.db,y=Q.d[1];let s=50,t=[];
+if((b-a+10)%10===5){s+=25;t.push('두 사람의 일간이 합(合)을 이뤄. 처음부터 강하게 끌리는 사이야.')}
+if((13-x)%12===y){s+=20;t.push('배우자 자리끼리 합이야. 함께 있으면 편안하고 오래가기 좋아.')}
+if((y-x+12)%12===6){s-=15;t.push('배우자 자리끼리 충(沖)이야. 끌리는 만큼 자주 부딪힐 수 있으니 말조심이 필요해.')}
+if((se(b)-se(a)+5)%5===C.star){s+=15;t.push('그 사람이 네 인연의 별 기운을 가졌어. 연인으로서 잘 맞는 기운이야.')}
+const r=(se(b)-se(a)+5)%5;
+if(r===0){s+=5;t.push('같은 오행이라 친구처럼 편한 사이야.')}
+else if(r===1||r===4){s+=10;t.push('오행이 서로 살려주는 상생 관계야. 함께 있으면 서로 힘이 돼.')}
+const zb=Q.y[1];if((13-C.yb)%12===zb||(SAM[C.yb%4].includes(zb)&&C.yb!==zb)){s+=10;t.push('띠끼리도 잘 맞아.')}
+s=Math.max(12,Math.min(98,s));
+const v=s>=85?'실이 단단하게 묶인 인연이야.':s>=70?'잘 맞는 편이야. 조금만 노력하면 오래갈 수 있어.':s>=50?'무난한 궁합이야. 서로 다른 점을 이해하는 게 열쇠야.':'쉽지 않은 궁합이야. 대신 서로 배울 게 많은 사이야.';
+botSay(`두 사람의 궁합은 <b class="em">${s}점</b>. ${v}<br><br>${t.length?t.join('<br><br>'):'특별히 끌어당기거나 부딪히는 기운은 없어. 관계는 둘이 만들어 가기 나름이야.'}<br><br>그 사람은 <b>${G[b]}(${GK[b]})</b> 일간이야. ${STYLE[b][0]}`);
 }
 </script>
 </body>
